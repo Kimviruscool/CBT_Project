@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT MASTER - 시험 응시</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <div class="perspective-container">
+        <main class="test-paper" id="paper">
+            <div class="paper-content">
+                <button class="back-home" onclick="location.href='index.html'">◀ HOME</button>
+
+                <section id="setup-view">
+                    <header class="paper-header">
+                        <h1>과목 선택 및 응시 설정</h1>
+                        <p>응시하고자 하는 자격증 종목을 선택하십시오.</p>
+                        <div class="divider"></div>
+                    </header>
+
+                    <div class="category-selection">
+                        <div class="select-box">
+                            <label for="category">자격 종목</label>
+                            <select id="category-select">
+                                <option value="bartender">조주기능사</option>
+                                <option value="network">네트워크관리사 2급</option>
+                            </select>
+                        </div>
+                        <button class="start-btn" onclick="startQuiz()">03. 문제 풀기 시작</button>
+                    </div>
+                </section>
+
+                <section id="quiz-view" class="hidden">
+                    <header class="quiz-header">
+                        <span id="display-category">조주기능사</span>
+                        <span id="progress-text">Q 01 / 20</span>
+                    </header>
+                    <div class="divider-thin"></div>
+
+                    <article class="question-section">
+                        <p id="question-text">문제가 여기에 표시됩니다.</p>
+                        <div class="options-group" id="options-container">
+                            </div>
+                    </article>
+
+                    <footer class="quiz-footer">
+                        <button class="nav-btn" onclick="prevQuestion()">이전</button>
+                        <button class="nav-btn highlight" onclick="nextQuestion()">다음 문제</button>
+                    </footer>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="test.js"></script>
+</body>
+</html>

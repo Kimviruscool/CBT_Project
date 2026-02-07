@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT MASTER - 조주기능사</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="perspective-container">
+        <main class="test-paper" id="paper">
+            <div class="paper-content">
+                <div class="watermark">CONFIDENTIAL</div>
+
+                <header class="paper-header">
+                    <span class="exam-code">제 2026-01호</span>
+                    <h1>국가기술자격 CBT 시험</h1>
+                    <h2>CBT 문제 은행 시스템</h2>
+                    <div class="divider"></div>
+                </header>
+
+                <div class="menu-selection">
+                    <p class="instruction">본인의 학습 목표에 맞는 메뉴를 선택하십시오.</p>
+
+                    <div class="button-container">
+                        <button class="menu-btn solve" onclick="location.href='test.html'">
+                            <span class="btn-text">01. 실전 문제 풀이</span>
+                            <span class="btn-sub">기존 문제 은행에서 무작위 출제</span>
+                        </button>
+
+                        <button class="menu-btn extract" onclick="location.href='extraction.html'">
+                            <span class="btn-text">02. 새로운 문제 추출</span>
+                            <span class="btn-sub">YouTube 링크 분석 및 AI 생성</span>
+                        </button>
+                    </div>
+                </div>
+
+                <footer class="paper-footer">
+                    <p>© 2026 CBT Project Lab. All Rights Reserved.</p>
+                    <p>© 필요로 하는 문제가 없으면 문제 추출로 이동하여 문제를 만들어서 사용해주세요.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

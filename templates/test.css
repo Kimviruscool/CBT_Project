@@ -1,0 +1,62 @@
+/* index.css의 3D 설정을 그대로 가져오되, 내부 요소 최적화 */
+:root {
+    --paper-white: #ffffff;
+    --ink-black: #1a1a1a;
+    --accent-blue: #2c3e50;
+}
+
+body {
+    margin: 0; height: 100vh; display: flex; justify-content: center;
+    align-items: center; background: #e0e0e0; overflow: hidden;
+    font-family: 'Pretendard', serif;
+}
+
+.perspective-container { perspective: 1500px; }
+
+.test-paper {
+    width: 500px; height: 700px; background: var(--paper-white);
+    padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    position: relative; transition: transform 0.1s ease-out;
+    border: 1px solid #ddd;
+}
+
+.back-home {
+    background: none; border: none; font-size: 0.8rem;
+    color: #999; cursor: pointer; position: absolute; top: 20px; left: 20px;
+}
+
+.hidden { display: none; }
+
+/* 카테고리 선택 UI */
+.category-selection { margin-top: 100px; text-align: center; }
+.select-box { margin-bottom: 40px; }
+.select-box label { display: block; font-weight: bold; margin-bottom: 10px; }
+#category-select {
+    width: 80%; padding: 12px; font-size: 1rem;
+    border: 2px solid var(--ink-black); background: none;
+}
+
+.start-btn {
+    width: 80%; padding: 20px; background: var(--ink-black);
+    color: white; border: none; font-size: 1.1rem; cursor: pointer;
+}
+
+/* 퀴즈 UI */
+.quiz-header { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: bold; }
+.divider-thin { height: 1px; background: #eee; margin: 15px 0; }
+#question-text { font-size: 1.2rem; line-height: 1.6; min-height: 100px; margin-top: 30px; }
+
+.options-group { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+.option-item {
+    padding: 15px; border: 1px solid #ddd; cursor: pointer;
+    text-align: left; transition: 0.2s; background: none;
+}
+.option-item:hover { background: #f9f9f9; border-color: var(--ink-black); }
+.option-item.selected { background: var(--ink-black); color: white; }
+
+.quiz-footer {
+    position: absolute; bottom: 40px; left: 40px; right: 40px;
+    display: flex; justify-content: space-between;
+}
+.nav-btn { padding: 10px 25px; border: 1px solid #ddd; background: white; cursor: pointer; }
+.highlight { background: var(--ink-black); color: white; border: none; }

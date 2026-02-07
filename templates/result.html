@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT MASTER - 채점 결과</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <div class="perspective-container">
+        <main class="test-paper" id="paper">
+            <div class="paper-content">
+                <header class="result-header">
+                    <h1>시험 결과 보고서</h1>
+                    <div class="score-badge">
+                        <span id="correct-count">0</span> / <span id="total-count">0</span>
+                    </div>
+                    <p id="pass-status">합격 여부를 확인 중입니다...</p>
+                    <div class="divider"></div>
+                </header>
+
+                <section class="wrong-list-section">
+                    <h3>❌ 오답 노트 (틀린 번호 클릭)</h3>
+                    <div id="wrong-numbers-container" class="number-grid">
+                        </div>
+                </section>
+
+                <footer class="result-footer">
+                    <button class="action-btn" onclick="location.href='test.html'">다시 응시하기</button>
+                    <button class="action-btn highlight" onclick="location.href='index.html'">메인으로</button>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <div id="detail-modal" class="modal hidden">
+        <div class="modal-content paper-texture">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2 id="modal-q-title">문제 상세 보기</h2>
+            <div class="divider-thin"></div>
+            <p id="modal-question-text" class="q-text"></p>
+            <div class="answer-compare">
+                <div class="ans-box user-ans">
+                    <span>내가 선택한 답</span>
+                    <strong id="user-selected"></strong>
+                </div>
+                <div class="ans-box correct-ans">
+                    <span>실제 정답</span>
+                    <strong id="correct-answer"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="result.js"></script>
+</body>
+</html>

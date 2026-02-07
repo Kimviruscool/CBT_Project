@@ -1,0 +1,109 @@
+:root {
+    --paper-white: #ffffff;
+    --ink-black: #1a1a1a;
+    --accent-blue: #2c3e50;
+    --shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0e0e0; /* 배경을 어둡게 하여 흰 종이 강조 */
+    font-family: 'Pretendard', 'Noto Serif KR', serif;
+    overflow: hidden;
+}
+
+/* 3D 컨테이너 */
+.perspective-container {
+    perspective: 1500px;
+}
+
+/* 시험지 디자인 */
+.test-paper {
+    width: 450px;
+    height: 600px;
+    background: var(--paper-white);
+    padding: 40px;
+    box-shadow: 0 20px 50px var(--shadow);
+    position: relative;
+    transition: transform 0.1s ease-out; /* 부드러운 움직임 */
+    border: 1px solid #ddd;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 20px 20px; /* 아주 미세한 모눈종이 효과 */
+}
+
+/* 워터마크 */
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.03);
+    font-weight: 900;
+    user-select: none;
+    pointer-events: none;
+}
+
+.paper-header { text-align: center; margin-bottom: 50px; }
+.exam-code { font-size: 0.8rem; color: #666; text-decoration: underline; }
+h1 { font-size: 1.5rem; margin: 20px 0 5px; letter-spacing: 2px; }
+h2 { font-size: 1.1rem; color: var(--accent-blue); font-weight: 500; }
+.divider { height: 2px; background: var(--ink-black); margin-top: 15px; }
+
+.instruction { font-size: 0.9rem; color: #555; margin-bottom: 30px; }
+
+/* 버튼 디자인 */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-btn {
+    background: none;
+    border: 2px solid var(--ink-black);
+    padding: 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-btn::after {
+    content: '▶';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    background: var(--ink-black);
+    color: white;
+    transform: translateX(10px);
+}
+
+.menu-btn:hover::after { opacity: 1; }
+
+.btn-text { display: block; font-size: 1.1rem; font-weight: bold; margin-bottom: 5px; }
+.btn-sub { display: block; font-size: 0.8rem; opacity: 0.7; }
+
+.paper-footer {
+    position: absolute;
+    bottom: 40px;
+    width: calc(100% - 80px);
+    text-align: center;
+    font-size: 0.7rem;
+    color: #999;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+}

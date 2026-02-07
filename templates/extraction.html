@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT MASTER - 문제 추출</title>
+    <link rel="stylesheet" href="extraction.css">
+</head>
+<body>
+    <div class="perspective-container">
+        <main class="test-paper" id="paper">
+            <div class="paper-content">
+                <button class="back-home" onclick="location.href='index.html'">◀ HOME</button>
+
+                <header class="paper-header">
+                    <h1>신규 문제 추출 의뢰서</h1>
+                    <p>학습할 유튜브 영상의 링크를 아래에 기입하십시오.</p>
+                    <div class="divider"></div>
+                </header>
+
+                <section class="extraction-form">
+                    <div class="input-area">
+                        <label for="youtube-link">YouTube URL</label>
+                        <input type="text" id="youtube-link" placeholder="https://www.youtube.com/watch?v=...">
+                    </div>
+
+                    <button id="extract-btn" class="main-action-btn" onclick="startExtraction()">
+                        04. 지문 분석 및 문제 추출 시작
+                    </button>
+
+                    <div id="processing-status" class="status-box hidden">
+                        <div class="loader"></div>
+                        <p>AI가 자막을 분석하여 문제를 생성 중입니다...</p>
+                    </div>
+                </section>
+
+                <footer id="completion-area" class="footer-area hidden">
+                    <div class="divider-dashed"></div>
+                    <button class="complete-btn" onclick="finishProcess()">
+                        ✅ 추출 완료 (메인으로 이동)
+                    </button>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="extraction.js"></script>
+</body>
+</html>
