@@ -2,7 +2,7 @@
     --paper-white: #ffffff;
     --ink-black: #1a1a1a;
     --accent-blue: #2c3e50;
-    --shadow: rgba(0, 0, 0, 0.15);
+    --shadow: rgba(0, 0, 0, 0.12); /* 고정된 상태에 어울리는 부드러운 그림자 */
 }
 
 body {
@@ -11,33 +11,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #e0e0e0; /* 배경을 어둡게 하여 흰 종이 강조 */
+    background: #e0e0e0;
     font-family: 'Pretendard', 'Noto Serif KR', serif;
     overflow: hidden;
 }
 
-/* 3D 컨테이너 */
+/* 3D 효과 제거를 위해 단순 컨테이너로 변경 */
 .perspective-container {
-    perspective: 1500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* 시험지 디자인 */
+/* 시험지 디자인 (사이즈 450x600 유지) */
 .test-paper {
     width: 450px;
     height: 600px;
     background: var(--paper-white);
     padding: 40px;
-    box-shadow: 0 20px 50px var(--shadow);
+    box-shadow: 0 15px 35px var(--shadow); /* 정적인 상태에서 안정감을 주는 깊이감 */
     position: relative;
-    transition: transform 0.1s ease-out; /* 부드러운 움직임 */
     border: 1px solid #ddd;
+    /* transition: transform 제거 (마우스 반응 제거) */
     background-image:
         linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
-    background-size: 20px 20px; /* 아주 미세한 모눈종이 효과 */
+    background-size: 20px 20px;
 }
 
-/* 워터마크 */
+/* 워터마크 및 기타 요소는 그대로 유지 */
 .watermark {
     position: absolute;
     top: 50%;

@@ -6,57 +6,153 @@
 }
 
 body {
-    margin: 0; height: 100vh; display: flex; justify-content: center;
-    align-items: center; background: #e0e0e0; overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0e0e0;
     font-family: 'Pretendard', serif;
+    overflow: hidden;
 }
 
-.perspective-container { perspective: 1500px; }
+/* 3D 효과 제거를 위해 단순 정렬 컨테이너로 변경 */
+.perspective-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* 시험지 디자인 (480x600 사이즈 유지) */
 .test-paper {
-    width: 480px; height: 600px; background: var(--paper-white);
-    padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    position: relative; transition: transform 0.1s ease-out;
+    width: 480px;
+    height: 600px;
+    background: var(--paper-white);
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12); /* 정적인 상태에서 안정감을 주는 그림자 */
+    position: relative;
+    border: 1px solid #ddd;
+    /* transition: transform 제거 (마우스 반응 제거) */
+
+    /* 시험지 특유의 미세한 질감 추가 */
+    background-image:
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
 .back-home {
-    background: none; border: none; font-size: 0.8rem;
-    color: #999; cursor: pointer; position: absolute; top: 20px; left: 20px;
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: #999;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: color 0.2s;
 }
 
-.paper-header h1 { font-size: 1.5rem; margin-top: 30px; letter-spacing: -1px; }
+.back-home:hover { color: var(--ink-black); }
+
+.paper-header h1 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    letter-spacing: -1px;
+    color: var(--ink-black);
+}
+
+.divider {
+    height: 2px;
+    background: var(--ink-black);
+    margin-top: 15px;
+}
 
 /* 입력창 디자인 */
 .extraction-form { margin-top: 50px; }
 .input-area { margin-bottom: 30px; }
-.input-area label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 8px; }
-#youtube-link {
-    width: 100%; padding: 12px; font-size: 0.9rem; border: none;
-    border-bottom: 2px solid var(--ink-black); background: #f9f9f9; box-sizing: border-box;
+.input-area label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #666;
 }
 
+#youtube-link {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-bottom: 2px solid var(--ink-black);
+    background: #f9f9f9;
+    box-sizing: border-box;
+    outline: none;
+    transition: background 0.3s;
+}
+
+#youtube-link:focus { background: #f0f0f0; }
+
 .main-action-btn {
-    width: 100%; padding: 18px; background: var(--ink-black);
-    color: white; border: none; font-size: 1rem; cursor: pointer;
-    transition: 0.3s;
+    width: 100%;
+    padding: 18px;
+    background: var(--ink-black);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.main-action-btn:hover {
+    background: #333;
+    transform: translateY(-2px); /* 클릭 유도를 위한 미세한 피드백 */
 }
 
 /* 로딩 애니메이션 */
 .status-box { margin-top: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 .loader {
-    border: 3px solid #f3f3f3; border-top: 3px solid var(--ink-black);
-    border-radius: 50%; width: 20px; height: 20px;
-    animation: spin 1s linear infinite; margin: 0 auto 10px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--ink-black);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
 }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 /* 완료 버튼 영역 */
-.footer-area { position: absolute; bottom: 40px; left: 40px; right: 40px; text-align: center; }
-.divider-dashed { border-top: 1px dashed #ccc; margin-bottom: 20px; }
-.complete-btn {
-    width: 100%; padding: 15px; background: var(--success-green);
-    color: white; border: none; font-size: 1rem; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+.footer-area {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    text-align: center;
 }
+
+.divider-dashed {
+    border-top: 1px dashed #ccc;
+    margin-bottom: 20px;
+}
+
+.complete-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--success-green);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.2);
+    transition: opacity 0.3s;
+}
+
+.complete-btn:hover { opacity: 0.9; }
 
 .hidden { display: none; }

@@ -1,13 +1,10 @@
-const paper = document.getElementById('paper');
+/**
+ * [result.js]
+ * 3D 회전 효과가 제거된 고정형 결과 페이지 로직입니다.
+ * 시험 데이터 분석, 오답 리스트 생성, 모달 상세 보기 기능을 담당합니다.
+ */
 
-// 1. 3D 효과
-document.addEventListener('mousemove', (e) => {
-    const xAxis = (window.innerWidth / 2 - e.pageX) / 30;
-    const yAxis = (window.innerHeight / 2 - e.pageY) / 30;
-    paper.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-});
-
-// 2. 가상 테스트 결과 데이터 (실제로는 localStorage 등에서 가져와야 함)
+// 1. 가상 테스트 결과 데이터 (실제 서비스 시 DB나 localStorage에서 연동)
 const testResult = {
     total: 20,
     correct: 17,
@@ -18,11 +15,13 @@ const testResult = {
     ]
 };
 
-// 3. 결과 페이지 초기화
+// 2. 결과 페이지 초기화 함수
 function initResult() {
+    // 점수 텍스트 업데이트
     document.getElementById('correct-count').innerText = testResult.correct;
     document.getElementById('total-count').innerText = testResult.total;
 
+    // 합격 여부 계산 (60점 기준)
     const status = document.getElementById('pass-status');
     const passRate = (testResult.correct / testResult.total) * 100;
 
@@ -34,28 +33,35 @@ function initResult() {
         status.style.color = "#d9534f";
     }
 
+    // 오답 번호 버튼 생성
     const container = document.getElementById('wrong-numbers-container');
+    container.innerHTML = ''; // 초기화
+
     testResult.wrongQuestions.forEach(item => {
         const btn = document.createElement('button');
         btn.className = 'wrong-num-btn';
         btn.innerText = item.id;
+        btn.title = "클릭하여 문제 상세 보기";
         btn.onclick = () => showDetail(item);
         container.appendChild(btn);
     });
 }
 
-// 4. 상세 보기 모달 로직
+// 3. 상세 보기 모달 로직 (오답 확인)
 function showDetail(item) {
-    document.getElementById('modal-q-title').innerText = `제 ${item.id}번 문제 상세`;
+    document.getElementById('modal-q-title').innerText = `제 ${item.id}번 문제 상세 보기`;
     document.getElementById('modal-question-text').innerText = item.q;
     document.getElementById('user-selected').innerText = `${item.user}번`;
     document.getElementById('correct-answer').innerText = `${item.answer}번`;
 
+    // 모달 표시
     document.getElementById('detail-modal').classList.remove('hidden');
 }
 
+// 4. 모달 닫기 함수
 function closeModal() {
     document.getElementById('detail-modal').classList.add('hidden');
 }
 
+// 페이지 로드 시 실행
 initResult();
